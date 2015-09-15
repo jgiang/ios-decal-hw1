@@ -15,11 +15,11 @@ class Foo {
     var wordB : String!
     
     init (words: [String?]) {
-        wordA = words[0]!
-        wordB = words[1]!
+        wordA = words[0]
+        wordB = words[1]
     }
     
-//: When wordA and wordB are defined, they are given type 'String!' so the value assigned to them cannot be nil. We need to implicitly unwrap
+//: '?' doesn't unwrap an optional. When wordA and wordB are defined, they are given type 'String!' so the values are implicitly unwrapped when they are assigned and we don't need to forcefully unwrap them.
     
     
     
@@ -39,14 +39,14 @@ class Foo {
         return true
     }
     
-//: The 'let i' makes 'i' an constant so the complier can't increment it at each iteration of the loop. We should return true instead of nil
+//: The 'let i' makes 'i' an constant so the complier can't increment it at each iteration of the loop. We should return true instead of nil. The function needs to be denoted as a method of the Foo class by adding 'class' before 'func'
     
     
     
 //: ## Q3: More functions, and object initialization
 //: The method should be returning true or false -- what's wrong?
 //: Are we initializing the dictionary correctly?
-    class func isAnagram(wordA: String, wordB: String) -> Bool! {
+    class func isAnagram(wordA: String, wordB: String) -> Bool {
         var countLetters = [Character : Int]()
         let lenA = wordA.characters.count
         let lenB = wordB.characters.count
@@ -85,7 +85,7 @@ class Foo {
     }
 }
 
-//: The method header says that it returns an optional bool, when it should be non-optional and the function should return true instead of nil. The dictionary was not initialized correctly because there was no initializer call.
+//: The method header says that it returns an optional bool, when it should be non-optional and the function should return true instead of nil. The dictionary was not initialized because there was no initializer call. The function needs to be denoted as a method of the Foo class by adding 'class' before 'func'
 
 
 //: **Do not** change anything below.
